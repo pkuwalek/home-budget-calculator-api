@@ -6,8 +6,8 @@ import {
   GraphQLNonNull,
   GraphQLBoolean,
 } from 'graphql';
-import getEstateExpenses from '../resolvers/get_estate_expanses.mjs';
-import ExpenseType from './expense.mjs';
+import getEstateExpenses from '../resolvers/get_estate_expanses.js';
+import ExpenseType from './expense.js';
 
 const EstateType = new GraphQLObjectType({
   name: 'Estate',

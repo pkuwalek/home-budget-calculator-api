@@ -5,8 +5,8 @@ import {
   GraphQLInt,
   GraphQLNonNull,
 } from 'graphql';
-import getUserEstates from '../resolvers/get_user_estates.mjs';
-import EstateType from './estate.mjs';
+import getUserEstates from '../resolvers/get_user_estates.js';
+import EstateType from './estate.js';
 
 // UserType doesn't contain password, but data source will need to.
 const UserType = new GraphQLObjectType({

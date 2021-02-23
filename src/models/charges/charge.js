@@ -1,7 +1,7 @@
 import { GraphQLUnionType } from 'graphql';
-import OneTimeChargeType from './one_time_charge.mjs';
-import RecurrentChargeType from './recurrent_charge.mjs';
-import UseChargeType from './use_charge.mjs';
+import OneTimeChargeType from './one_time_charge.js';
+import RecurrentChargeType from './recurrent_charge.js';
+import UseChargeType from './use_charge.js';
 
 const ChargeType = new GraphQLUnionType({
   name: 'Charge',

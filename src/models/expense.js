@@ -5,8 +5,8 @@ import {
   GraphQLInt,
   GraphQLNonNull,
 } from 'graphql';
-import ChargeType from './charges/charge.mjs';
-import getExpenseCharges from '../resolvers/get_expense_charges.mjs';
+import ChargeType from './charges/charge.js';
+import getExpenseCharges from '../resolvers/get_expense_charges.js';
 
 const ExpenseType = new GraphQLObjectType({
   name: 'Expense',

@@ -1,4 +1,4 @@
-import Charges from '../db/charges.mjs';
+import Charges from '../db/charges.js';
 
 function isChargeAssignedToExpense(expense, charge) {
   return charge.expenseId === expense.id;
@@ -9,22 +9,25 @@ export default function getExpenseCharges(expense) {
     isChargeAssignedToExpense.bind(this, expense),
   );
   const namedOTC = oneTimeCharges.map((charge) => {
-    charge.name = 'OneTimeCharge';
-    return charge;
+    const typedCharge = charge;
+    typedCharge.name = 'OneTimeCharge';
+    return typedCharge;
   });
   const recurrentCharges = Charges.RecurrentCharge.filter(
     isChargeAssignedToExpense.bind(this, expense),
   );
   const namedRC = recurrentCharges.map((charge) => {
-    charge.name = 'RecurrentCharge';
-    return charge;
+    const typedCharge = charge;
+    typedCharge.name = 'RecurrentCharge';
+    return typedCharge;
   });
   const useCharges = Charges.UseCharge.filter(
     isChargeAssignedToExpense.bind(this, expense),
   );
   const namedUC = useCharges.map((charge) => {
-    charge.name = 'RecurrentCharge';
-    return charge;
+    const typedCharge = charge;
+    typedCharge.name = 'RecurrentCharge';
+    return typedCharge;
   });
   let charges = [];
   charges = charges.concat(namedOTC, namedRC, namedUC);

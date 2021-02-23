@@ -6,9 +6,9 @@ import {
 } from 'graphql';
 import express from 'express';
 import { graphqlHTTP } from 'express-graphql';
-import UserType from './models/user.mjs';
-import getUser from './resolvers/get_user.mjs';
-import getUsers from './resolvers/get_users.mjs';
+import UserType from './models/user.js';
+import getUser from './resolvers/get_user.js';
+import getUsers from './resolvers/get_users.js';
 
 const RootQueryType = new GraphQLObjectType({
   name: 'Query',

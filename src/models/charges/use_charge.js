@@ -6,7 +6,7 @@ import {
   GraphQLString,
   GraphQLList,
 } from 'graphql';
-import MeasurementType from './mesurement.mjs';
+import MeasurementType from './mesurement.js';
 
 const UseChargeType = new GraphQLObjectType({
   name: 'UseCharge',

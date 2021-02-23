@@ -2,9 +2,11 @@
   "name": "home-budget-calculator-api",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "src/server.js",
+  "type": "module",
   "scripts": {
-    "devStart": "nodemon server.mjs"
+    "dev": "nodemon src/server.js",
+    "format": "prettier-eslint 'server/**/*.{js,json}' --write"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +22,7 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "prettier-eslint-cli": "^5.0.0"
   }
 }
