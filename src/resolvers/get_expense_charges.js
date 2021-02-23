@@ -4,32 +4,29 @@ function isChargeAssignedToExpense(expense, charge) {
   return charge.expenseId === expense.id;
 }
 
+function addChargeNameProperty(typeName, charge) {
+  const typedCharge = charge;
+  typedCharge.name = typeName;
+  return typedCharge;
+}
+
 export default function getExpenseCharges(expense) {
   const oneTimeCharges = Charges.OneTimeCharge.filter(
     isChargeAssignedToExpense.bind(this, expense),
+  ).map(
+    addChargeNameProperty.bind(this, 'OneTimeCharge'),
   );
-  const namedOTC = oneTimeCharges.map((charge) => {
-    const typedCharge = charge;
-    typedCharge.name = 'OneTimeCharge';
-    return typedCharge;
-  });
   const recurrentCharges = Charges.RecurrentCharge.filter(
     isChargeAssignedToExpense.bind(this, expense),
+  ).map(
+    addChargeNameProperty.bind(this, 'RecurrentCharge'),
   );
-  const namedRC = recurrentCharges.map((charge) => {
-    const typedCharge = charge;
-    typedCharge.name = 'RecurrentCharge';
-    return typedCharge;
-  });
   const useCharges = Charges.UseCharge.filter(
     isChargeAssignedToExpense.bind(this, expense),
+  ).map(
+    addChargeNameProperty.bind(this, 'UseCharge'),
   );
-  const namedUC = useCharges.map((charge) => {
-    const typedCharge = charge;
-    typedCharge.name = 'RecurrentCharge';
-    return typedCharge;
-  });
   let charges = [];
-  charges = charges.concat(namedOTC, namedRC, namedUC);
+  charges = charges.concat(oneTimeCharges, recurrentCharges, useCharges);
   return charges;
 }

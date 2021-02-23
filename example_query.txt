@@ -1,0 +1,45 @@
+query GetUsers{ users 
+  {
+  	id
+    name
+    email
+    estates {
+      id
+      userId
+      type
+      isRented
+      city
+      peopleCount
+      sizeM2
+      expenses {
+        id
+        estateId
+        name
+        charges {
+          __typename
+        }
+      }
+    }
+  }
+}
+
+query GetUser{ user(id: 1) {
+  id
+  name
+  email
+  estates{
+    expenses{
+      name
+      charges{
+        ... on OneTimeCharge {
+          fee
+          dateOfCharge
+        }
+        ... on RecurrentCharge {
+          fee
+					startDate
+        }
+      }
+    }
+  }
+}}
