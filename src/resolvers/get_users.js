@@ -1,5 +1,5 @@
-import Users from '../db/users.js';
+import { getAllUsers } from '../db/users.js';
 
 export default function getUsers() {
-  return Users.users;
+  return getAllUsers();
 }
