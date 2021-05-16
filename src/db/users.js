@@ -14,12 +14,17 @@ const getAllUsers = () => {
     }));
 };
 
-// poszukac jak wyciagnac jeden rekord z queryresult, bo dostane tablice z 1 rekordem
 const getUserById = (id) => {
-  const selectUserById = `SELECT user FROM users WHERE user_id = ${id}`;
+  const selectUserById = `SELECT * FROM users WHERE user_id = ${id}`;
   const queryResult = ExecuteDbQuery(selectUserById);
-  console.log('were in getuserbyid');
-  return queryResult;
+  return queryResult.then((users) => users.rows.map((singleuser) => {
+    const container = {};
+    container.id = singleuser.user_id;
+    container.name = singleuser.name;
+    container.email = singleuser.email;
+    console.log(container);
+    return container;
+  }));
 };
 
 export { getAllUsers, getUserById };

@@ -1,5 +1,11 @@
-import Users from '../db/users.js';
+import { getUserById } from '../db/users.js';
 
-export default function getUser(parrent, args) {
-  return Users.users.find((user) => user.id === args.id);
-}
+const getUser = (parent, args) => {
+  if (args) {
+    return getUserById(args.id);
+  }
+  console.log('smth went wrong in getUser');
+  return null;
+};
+
+export default getUser;
