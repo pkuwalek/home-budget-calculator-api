@@ -15,16 +15,19 @@ const getAllUsers = () => {
 };
 
 const getUserById = (id) => {
-  const selectUserById = `SELECT * FROM users WHERE user_id = ${id}`;
+  const selectUserById = `SELECT user_id, name, email FROM users WHERE user_id = ${id}`;
   const queryResult = ExecuteDbQuery(selectUserById);
-  return queryResult.then((users) => users.rows.map((singleuser) => {
-    const container = {};
-    container.id = singleuser.user_id;
-    container.name = singleuser.name;
-    container.email = singleuser.email;
-    console.log(container);
-    return container;
-  }));
+  return queryResult.then((users) => {
+    const FirstRow = users.rows[0];
+    if (FirstRow) {
+      return ({
+        id: FirstRow.user_id,
+        name: FirstRow.name,
+        email: FirstRow.email,
+      });
+    }
+    return null;
+  });
 };
 
 export { getAllUsers, getUserById };
